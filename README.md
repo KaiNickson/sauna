@@ -13,4 +13,4 @@ TO-DO
 =====
 
 -Find a way to sum the global statistics of all the achievements earnd by a player
--Conjure an apealing design for the website
+-Conjure an appealing design for the website
