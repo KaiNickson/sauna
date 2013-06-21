@@ -1,37 +1,76 @@
 <html>
     <head>
+        <?php
+        /*
+         * TO-DO:
+         * MOAR/Better abstractions to improve readbility ans make comments redundant.
+         */
 
+        //imports
+        require_once("lib/steam-condenser.php");
+
+        //PHP to HTML abstractions
+        function html_newline() {
+            echo "<br />";
+        }
+
+        function html_Welcome($name) {
+            echo "Welcome, " . $name;
+        }
+
+        function html_Avatar($avatar) {
+            echo "<img src='" . $avatar . "'>";
+        }
+
+        function html_Form() {
+            echo "<form action='index.php' method='get'>";
+            echo "<input type='text' name='txtId'> <input type='submit' value='OK'>";
+            echo "</form>";
+        }
+        ?>
     </head>
     <body>
+
         <?php
-        require_once("lib/steam-condenser.php");
-        //$steamUser = new SteamId('76561198033242043');
+        /*
+         * Check if a SteamID was given in the URL.
+         * If so show the score
+         * If not show the form
+         */
         if (isset($_GET["txtId"])) {
             $getID = $_GET["txtId"];
         }
+
         if (isset($getID)) {
             $steamUser = new SteamId($getID);
-            echo "Welcome, " . $steamUser->getNickname();
-            echo "<img src='" . $steamUser->getFullAvatarUrl() . "'>";
-            
-            echo "<br>";
-            echo "Games:  ";            
-            echo "<table>";
+
+            /*
+             * Formalities:
+             * Show welcome message and avatar
+             */
+            html_Welcome($steamUser->getNickname());
+            html_Avatar($steamUser->getFullAvatarUrl());
+
+            html_newline();
+
+            //Get array of the users games
+
             foreach ($steamUser->getGames() as $game) {
-                echo "<tr> <td> <a href='#'>";
-                echo $game->getName();
-                echo " </a></td>";
-                //echo "<td>";
-                //echo $steamUser->getAchievementsDone();
-                echo "</tr>";
+                try {
+                    $stats = $steamUser->getGameStats($game->getID());
+                    $achievements = $stats->getAchievements();
+                    foreach ($achievements as $achievement) {
+                        $achievement->getName();
+                    }
+                } catch (Exception $e) {
+                    echo $game->getName() . " does not have achievements";
+                }
+                html_newline();
             }
-            echo "</table>";
+        } else {
+            html_Form();
         }
         ?>
-
-        <form action="index.php" method="get">
-            <input type="text" name="txtId"> <input type="submit" value="OK">
-        </form>
 
     </body>
 </html>
