@@ -9,8 +9,25 @@ License
 
 This code is free software; you can redistribute it and/or modify it under the terms of the MIT License. A copy of this license can be found in the included LICENSE file.
 
-TO-DO
-=====
+Version
+=======
 
--Find a way to sum the global statistics of all the achievements earnd by a player
--Conjure an appealing design for the website
+0.0.0
+
+Milestones
+==========
+
+0.0.1
+-----
+
+Todo:
+-Get a list of lists of unlcoked achievements per game
+
+Bugs:
+-Showing a random number of games, mostely ones without steam gamestats
+
+0.1.0
+-----
+
+Todo:
+-showing sum of globalachievementstats of echt unlocked achievement.
