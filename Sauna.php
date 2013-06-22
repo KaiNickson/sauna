@@ -48,19 +48,34 @@
             html_newline();
 
             //Get array of the users games
-
+            echo "<ul>";
             foreach ($steamUser->getGames() as $game) {
+
+
                 try {
+
                     $stats = $steamUser->getGameStats($game->getID());
                     $achievements = $stats->getAchievements();
+                    echo "<li>";
+                    echo $game->getName();
+                    echo "</li>";
+                    
+                    echo "<ul>";
                     foreach ($achievements as $achievement) {
-                        $achievement->getName();
+
+                        if ($achievement->isUnlocked()) {
+                            echo "<li>";
+                            echo $achievement->getName();
+                            echo "</li>";
+                        }
                     }
+
+                    echo "</ul>";
                 } catch (Exception $e) {
-                    echo $game->getName() . " does not have achievements";
+                    //echo $game->getName() . " does not have achievements";
                 }
-                html_newline();
             }
+            echo "</ul>";
         } else {
             header('Location: views/idform.php');
         }
