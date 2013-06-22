@@ -26,6 +26,11 @@
 		 echo "<li>" . $item . "</li>";
 	}
 	
+	echo "<html>";
+	echo "	<head>";
+	echo "	</head>";
+	echo "	<body>";
+	
 	/*
 	 * Check if a SteamID was given in the URL.
 	 * If so show the score
@@ -76,4 +81,7 @@
 	} else {
 		header('Location: views/idform.php');
 	}
+	
+	echo "	</body>";
+	echo "</html>";
 ?>
