@@ -1,4 +1,4 @@
 <?php
-
-header('Location: Sauna.php');
+require_once 'root.php';
+header('Location: controller.php');
 ?>
