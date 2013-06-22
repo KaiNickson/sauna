@@ -30,4 +30,4 @@ Bugs:
 -----
 
 Todo:
-- Showing sum of global achievement stats of each unlocked achievement.
+- Showing sum of global achievement stats of echt unlocked achievement.
