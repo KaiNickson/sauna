@@ -3,6 +3,7 @@
         <?php
         /*
          * TO-DO:
+         * Compare the list of unlocked achievements with al the achievements of its game and get their Global Statistics (percentage of players who unlocked the achievement)
          * MOAR/Better abstractions to improve readbility ans make comments redundant.
          * Move the the user output to a seperate view
          */
@@ -21,6 +22,10 @@
 
         function html_Avatar($avatar) {
             echo "<img src='" . $avatar . "'>";
+        }
+        
+        function html_listitem($item){
+             echo "<li>" . $item . "</li>";
         }
         ?>
     </head>
@@ -51,22 +56,19 @@
             echo "<ul>";
             foreach ($steamUser->getGames() as $game) {
 
-
+                //try to get the Steam GameStats for every game the player owns
+                //if no gamestats do nothing
                 try {
-
                     $stats = $steamUser->getGameStats($game->getID());
                     $achievements = $stats->getAchievements();
-                    echo "<li>";
-                    echo $game->getName();
-                    echo "</li>";
-                    
+
+                    html_listitem($game->getName());
+                                        
+                    //for each achievement that is unlocked, print achievement name in a sublist.
                     echo "<ul>";
                     foreach ($achievements as $achievement) {
-
                         if ($achievement->isUnlocked()) {
-                            echo "<li>";
-                            echo $achievement->getName();
-                            echo "</li>";
+                            html_listitem($achievement->getName());
                         }
                     }
 
