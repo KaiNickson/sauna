@@ -2,7 +2,7 @@
 
 /*
  * Check if a SteamID was given in the URL.
- * If so go to the Saune.php view
+ * If so go to the Sauna.php view
  * If not show the idform.php view
  */
 if (isset($_GET["id"])) {
