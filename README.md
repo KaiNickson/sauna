@@ -1,7 +1,7 @@
 Sauna
 =====
 
-Simple webapplication to give players with a steam acount a score based on their achievements.
+Simple web application to give players with a steam account a score based on their achievements.
 
 
 License
@@ -21,13 +21,13 @@ Milestones
 -----
 
 Todo:
--Get a list of lists of unlcoked achievements per game
+-Get a list of unlocked achievements per game
 
 Bugs:
--Showing a random number of games, mostely ones without steam gamestats
+-Showing a random number of games, mostly ones without steam game stats
 
 0.1.0
 -----
 
 Todo:
--showing sum of globalachievementstats of echt unlocked achievement.
+- Showing sum of global achievement stats of each unlocked achievement.
