@@ -1,7 +1,7 @@
 Sauna
 =====
 
-Simple web application to give players with a steam account a score based on their achievements.
+Simple web application to give players with a steam account a score based on the achievements they have.
 
 
 License
@@ -23,7 +23,8 @@ Milestones
 -----
 
 Todo:
-- Make propper models and relieve the views from as much work as possible 
+- Make propper models and relieve the views from as much work as possible
+- Create an actual design
 
 0.1.0
 -----
